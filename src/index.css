@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[#0B0F19] text-gray-200 antialiased;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto;
+  }
+  
+  /* Smooth section transitions */
+  section {
+    @apply transition-all duration-700 ease-in-out;
+  }
+  
+  /* Enhanced glow effects */
+  .glow {
+    @apply relative;
+  }
+  
+  .glow::after {
+    @apply content-[''] absolute -z-10 blur-[120px] rounded-full transition-all duration-700 ease-in-out;
+    background: radial-gradient(circle, rgba(168,85,247,0.3) 0%, rgba(99,102,241,0.1) 100%);
+    width: 150%;
+    height: 150%;
+    left: -25%;
+    top: -25%;
+  }
+  
+  /* Enhanced card hover effects */
+  .card-hover {
+    @apply relative transition-all duration-700 ease-in-out;
+    background: linear-gradient(to bottom right, rgba(17, 24, 39, 0.9), rgba(17, 24, 39, 0.7));
+    backdrop-filter: blur(10px);
+  }
+  
+  .card-hover::before {
+    content: '';
+    @apply absolute inset-0 rounded-xl opacity-0 transition-all duration-700 ease-in-out;
+    background: linear-gradient(to bottom right, rgba(168,85,247,0.1), rgba(99,102,241,0.05));
+  }
+  
+  .card-hover:hover::before {
+    @apply opacity-100;
+  }
+
+  /* Smooth scroll indicator */
+  .scroll-indicator {
+    @apply fixed right-4 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-2;
+  }
+
+  .scroll-indicator-dot {
+    @apply w-2 h-2 rounded-full bg-gray-600 transition-all duration-700 ease-in-out;
+  }
+
+  .scroll-indicator-dot.active {
+    @apply w-3 h-3 bg-purple-500;
+  }
+}
+
+/* Enhanced animations */
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
